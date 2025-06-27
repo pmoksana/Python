@@ -1,0 +1,30 @@
+Python Scripting challenge
+
+
+Challenge Lab: Python Scripting Exercise
+ 
+
+This lab launches an EC2 instance named Linux Host.  
+ips -- public 34.214.183.99
+
+
+Using SSH to Connect to the Linux Host
+
+
+cd ~/Downloads
+chmod 400 labsuser.pem
+ssh -i labsuser.pem ec2-user@<public-ip>
+
+ 
+#Write a Python script to:
+Display all the prime numbers between 1 to 250.
+Store the results in a results.txt file.
+Test the script. Verify that it produced the expected results in the results.txt file.
+Save the script and make a note of its location (absolute path) for future reference.
+
+
+Note: Both Python 2 and Python 3 are installed on the Linux Host. 
+It is recommended to use Python 3.
+To run a Python script using version 3, run the following command by replacing file.py with your file name.
+
+python3 file.py
