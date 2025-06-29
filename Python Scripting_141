@@ -1,8 +1,7 @@
 Python Scripting challenge
 
 
-Challenge Lab: Python Scripting Exercise
- 
+
 
 This lab launches an EC2 instance named Linux Host.  
 ips -- public 34.214.183.99
@@ -13,18 +12,82 @@ Using SSH to Connect to the Linux Host
 
 cd ~/Downloads
 chmod 400 labsuser.pem
-ssh -i labsuser.pem ec2-user@<public-ip>
+ssh -i labsuser.pem ec2-user@34.220.3.149
 
  
-#Write a Python script to:
-Display all the prime numbers between 1 to 250.
-Store the results in a results.txt file.
-Test the script. Verify that it produced the expected results in the results.txt file.
-Save the script and make a note of its location (absolute path) for future reference.
+#Write a Python script to display all the prime numbers between 1 to 250.
+
+def print_primes_for_beginner(start_range, end_range):
+    
+    print(f"Finding prime numbers between {start_range} and {end_range}:")
+
+    for num in range(start_range, end_range + 1):
+        # A prime number must be greater than 1
+        if num > 1:
+            is_prime = True
+            for i in range(2, (num // 2) + 1):
+                if (num % i) == 0:
+                    is_prime = False  
+                    break            
+            if is_prime:
+                print(num)
+
+# Call the function to print prime numbers between 1 and 250
+print_primes_for_beginner(1, 250)
+
+def write_to_file_simple(filename, content):
+    try:
+        with open(filename, 'w') as file_object:
+            file_object.write(content)
+        print(f"Content successfully written to '{filename}'.")
+    except IOError as e:
+        print(f"Error: Could not write to '{filename}'. Reason: {e}")
+my_file_name = "results.txt"
+my_content = "Hello, this is a simple test result.\n"
+my_content += "This is the second line of content.\n"
+my_content += "You can store any text here!"
+
+#Store the results in a results.txt file.
+write_to_file_simple(my_file_name, my_content)
+print("\nCheck your directory for 'results.txt' to see the saved content.")
+
+#Test the script. Verify that it produced the expected results in the results.txt file.
+
+def read_file_simple(filename):
+  
+    try:
+        with open(filename, 'r') as file_object:
+            content = file_object.read()
+            print(f"\n--- Content of '{filename}' ---\n")
+            print(content)
+            print(f"\n--- End of '{filename}' Content ---\n")
+    except FileNotFoundError:
+        print(f"Error: The file '{filename}' was not found. Please ensure it exists.")
+    except IOError as e:
+        print(f"Error: Could not read from '{filename}'. Reason: {e}")
+
+# Call the function to read and display the content of results.txt
+read_file_simple("results.txt")
+
+def read_file_simple(filename):
+   
+    try:
+ 
+        with open(filename, 'r') as file_object:
+     
+            content = file_object.read()
+            print(f"\n--- Content of '{filename}' ---\n")
+            print(content)
+            print(f"\n--- End of '{filename}' Content ---\n")
+    except FileNotFoundError:
+   
+        print(f"Error: The file '{filename}' was not found. Please ensure it exists.")
+    except IOError as e:
+      
+        print(f"Error: Could not read from '{filename}'. Reason: {e}")
 
 
-Note: Both Python 2 and Python 3 are installed on the Linux Host. 
-It is recommended to use Python 3.
-To run a Python script using version 3, run the following command by replacing file.py with your file name.
 
-python3 file.py
+
+
+
